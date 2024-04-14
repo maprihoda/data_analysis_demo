@@ -1,0 +1,47 @@
+# General
+.DS_Store
+*.log
+*.csv
+*.tsv
+*.tmp
+.env
+.venv/
+*.egg-info/
+dist/
+build/
+.idea/
+.vscode/
+*.swp
+*~
+.__MACOSX
+
+# dbt files
+/dbt_modules/
+/target/
+/logs/
+/dbt_packages
+/.user.yml
+
+# Python virtualenv
+venv/
+ENV/
+env/
+.pytest_cache/
+*.py[cod]
+*.pyc
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+
+# If using the dbt Cloud IDE, you might also ignore:
+/.dbt/
+
+# If using partial parsing (available in dbt 0.18.0 and later)
+/.partial_parse.msgpack

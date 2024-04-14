@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: int_payment_amounts_per_order
+    description: This dbt model aggregates payment amounts per order, including cash, credit, and total amounts.
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('stg_northwind_orders')
+              field: order_id
+      - name: cash_amount
+        description: The total cash amount paid for the order.
+      - name: credit_amount
+        description: The total amount paid by credit for the order.
+      - name: total_amount
+        description: The total payment amount for the order, combining cash and credit payments.
+
+  - name: int_order_details_orders
+    description: This dbt model enriches orders with detailed line items, including product and shipping information.
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_northwind_orders')
+              field: order_id
+      - name: order_detail_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_northwind_order_details')
+              field: order_detail_id

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: customer_lifetime_value
+    description: This query calculates the Customer Lifetime Value based on the total sales per customer. It's a key metric to understand the long-term value of customers.
+  - name: customer_order_frequency
+    description: This query identifies customers by the number of orders they've placed, highlighting frequent and infrequent customers.
+  - name: monthly_order_summary
+    description: This query calculates the total sales, number of orders, and average order value by month.
+  - name: monthly_sales_trend
+    description: This query is designed to track the monthly sales trend over time, helping to understand seasonal patterns or growth trends.
+  - name: most_valuable_customers
+    description: This query calculates and lists the top 10 customers by total value of their closed orders.
+  - name: most_valuable_customers_classified
+    description: This query identifies and ranks the top 10 customers by total value of their closed orders, including their classification based on the paid amount.
+  - name: order_processing_time
+    description: This query calculates the average time taken from order placement to shipping.
+  - name: products_by_revenue_and_quantity
+    description: This query ranks products by their total revenue and quantity sold.
+  - name: sales_discounts_analysis
+    description: This query analyzes the impact of discounts on sales by comparing the average order value with and without discounts.
+  - name: sales_efficiency_by_employee
+    description: This query evaluates the sales efficiency of employees by comparing the number of orders handled to the total sales generated.
+  - name: sales_performance_by_product_category
+    description: This query aims to analyze the sales performance across different product categories to identify which categories are the most profitable.

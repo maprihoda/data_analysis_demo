@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: This dbt model generates a date dimension table with daily granularity, spanning from January 1, 2000, to December 31, 2030.
+  - name: dim_products
+    description: This dbt model creates a products dimension table, detailing product attributes including unique product IDs.
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+  - name: fact_orders
+    description: This dbt model constructs an orders fact table, capturing transactional data with unique order IDs.
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null

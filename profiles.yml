@@ -1,0 +1,32 @@
+data_analysis_demo:
+  target: '{{ env_var("DBT_TARGET") }}'
+  outputs:
+    dev:
+      dbname: data_analysis_demo
+      host: localhost
+      pass: '{{ env_var("DBT_DEV_PASS") }}'
+      port: '{{ env_var("DBT_DEV_PORT") | int }}'
+      schema: 'dbt_{{ env_var("DBT_DEV_USER") }}'
+      threads: '{{ env_var("DBT_DEV_THREADS") | int }}'
+      type: postgres
+      user: '{{ env_var("DBT_DEV_USER") }}'
+
+    ci:
+      dbname: data_analysis_demo_staging
+      host: '{{ env_var("DBT_CI_HOST") }}'
+      pass: '{{ env_var("DBT_CI_PASS") }}'
+      port: '{{ env_var("DBT_CI_PORT") | int }}'
+      schema: '{{ env_var("DBT_CI_SCHEMA") }}'
+      threads: '{{ env_var("DBT_CI_THREADS") | int }}'
+      type: postgres
+      user: '{{ env_var("DBT_CI_USER") }}'
+
+    prod:
+      dbname: data_analysis_demo_production
+      host: '{{ env_var("DBT_PROD_HOST") }}'
+      pass: '{{ env_var("DBT_PROD_PASS") }}'
+      port: '{{ env_var("DBT_PROD_PORT") | int }}'
+      schema: '{{ env_var("DBT_PROD_SCHEMA") }}'
+      threads: '{{ env_var("DBT_PROD_THREADS") | int }}'
+      type: postgres
+      user: '{{ env_var("DBT_PROD_USER") }}'

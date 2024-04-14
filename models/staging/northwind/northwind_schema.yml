@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: stg_northwind_orders
+    description: This model represents the staging table for orders in the Northwind database.
+    columns:
+      - name: order_id
+        description: "The unique identifier for each order."
+        tests:
+          - unique
+          - not_null
+      - name: payment_type
+        description: The method of payment used for the order.
+        tests:
+          - accepted_values:
+              values: ['cash', 'credit']
+
+  - name: stg_northwind_products
+    description: This model represents the staging table for products in the Northwind database.
+    columns:
+      - name: product_id
+        description: "The unique identifier for each product."
+        tests:
+          - unique
+          - not_null
+      - name: supplier_id
+        description: >
+          SPLIT_PART(supplier_ids, ';', 1): This function splits the supplier_ids string by the delimiter ';' 
+          and returns the first element of the resulting array. If the string does not contain the delimiter, 
+          it returns the whole string. CAST(... AS INTEGER): This casts the result of SPLIT_PART to an integer. 
+          Since only a minority of supplier_ids values contain multiple values, we opt for picking up the first one.
+
+  - name: stg_northwind_order_details
+    description: This model represents the staging table for order details, linking orders to their respective products.
+    config:
+      materialized: view
+    columns:
+      - name: order_detail_id
+        description: The unique identifier for each order detail record.
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: The identifier for the order associated with this detail.
+        tests:
+          - relationships:
+              to: ref('stg_northwind_orders')
+              field: order_id
+      - name: product_id
+        description: The identifier for the product associated with this order detail.
+        tests:
+          - relationships:
+              to: ref('stg_northwind_products')
+              field: product_id

@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: northwind
+    database: data_analysis_demo
+    schema: dl_northwind
+    tables:
+      - name: products
+      - name: orders
+      - name: order_details
+      - name: shippers
+      - name: orders_status
+      - name: order_details_status
