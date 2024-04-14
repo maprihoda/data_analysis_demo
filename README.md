@@ -64,7 +64,7 @@ the virtual environment will be automatically activated every time we enter the 
 
 ### Install and set up dbt:
 ```
-pip install dbt-postgres
+pip install dbt-postgres==1.7.11
 dbt debug
 ```
 
