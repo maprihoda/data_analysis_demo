@@ -1,5 +1,5 @@
 
-## Set up for collaboration
+## Set up for collaboration:
 
 This Git workflow involves creating a fork of the project on GitHub, setting up your local environment, 
 and working within feature branches. You'll make changes in your branch, then submit these as a Pull Request (PR) 
@@ -50,6 +50,15 @@ Add and commit your changes, including a meaningful message and the JIRA ticket 
 Before creating a Pull Request, squash your commits to the feature branch into a single commit. This simplifies history 
 and review. Use your IDE for an easier process.
 
+To keep your feature branch up-to-date with the latest changes in the main branch and to minimize 
+the possibility of merge conflicts when merging your PR, regularly rebase your feature branch 
+on top of the updated main branch:
+
+    git checkout main
+    git pull upstream main
+    git checkout feature_branch
+    git rebase main
+
 
 ### Create a Pull Request:
 
@@ -66,3 +75,21 @@ After squashing, if you need to make further changes, ensure there's only one co
     git push --force-with-lease origin feature_branch
 
 This workflow ensures a clean, understandable history and facilitates a collaborative development process.
+
+
+### Merge your Pull Request:
+
+When your pull request (PR) is ready and has been approved by your colleagues, you can proceed to merge it 
+into the main branch. Here's how to do it:
+
+1. Go to GitHub and navigate to your repository where the PR is located.
+2. Find your PR in the "Pull Requests" section and click on it to open the PR details.
+3. Before merging, ensure all checks (like continuous integration tests) have passed 
+and that there are no conflicts with the base branch.
+4. Click on the "Merge pull request" button. Select the "Rebase and merge" option. 
+This option will reapply your commit on top of the base branch without creating a merge commit, 
+keeping the project history linear and clean.
+5. Confirm the merge by clicking on the "Confirm rebase and merge" button.
+
+After merging, it's a good practice to delete the feature branch to keep the repository tidy. You can do this 
+by clicking the "Delete branch" button that appears after the merge is complete.
