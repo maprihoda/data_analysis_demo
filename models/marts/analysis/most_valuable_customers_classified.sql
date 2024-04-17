@@ -1,13 +1,11 @@
 WITH closed_orders AS (
     SELECT
         o.customer_id,
-        SUM(d.quantity * d.unit_price * (1 - d.discount)) AS total_value
+        SUM(o.quantity * o.unit_price * (1 - o.discount)) AS total_value
     FROM
-        {{ ref('int_order_details_orders') }} d
-    INNER JOIN
-        {{ ref('stg_northwind_orders') }} o ON d.order_id = o.order_id
+        {{ ref('int_order_details_orders') }} o
     WHERE
-        o.status = 'Closed'
+        o.order_status = 'Closed'
     GROUP BY
         o.customer_id
 ),
