@@ -1,8 +1,6 @@
 version: 2
 
 models:
-  - name: customer_lifetime_value
-    description: This query calculates the Customer Lifetime Value based on the total sales per customer. It's a key metric to understand the long-term value of customers.
   - name: customer_order_frequency
     description: This query identifies customers by the number of orders they've placed, highlighting frequent and infrequent customers.
   - name: monthly_order_summary

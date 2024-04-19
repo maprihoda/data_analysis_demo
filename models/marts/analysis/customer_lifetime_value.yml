@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: customer_lifetime_value
+    description: This query calculates the Customer Lifetime Value based on the total sales per customer. It's a key metric to understand the long-term value of customers.
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: total_orders
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
+      - name: total_revenue
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
+      - name: avg_order_value
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
+      - name: customer_lifetime_value
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
