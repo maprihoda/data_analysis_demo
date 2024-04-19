@@ -34,7 +34,7 @@ Ensure your remotes are set up correctly:
 Start by ensuring your main branch is up-to-date:
 
     git checkout main
-    git pull upstream main
+    git pull --rebase upstream main
 
 Create a feature branch, naming it after your JIRA ticket:
 
@@ -55,7 +55,7 @@ the possibility of merge conflicts when merging your PR, regularly rebase your f
 on top of the updated main branch:
 
     git checkout main
-    git pull upstream main
+    git pull --rebase upstream main
     git checkout feature_branch
     git rebase main
 
